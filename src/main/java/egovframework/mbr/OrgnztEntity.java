@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Comment;
+
 /**
  * fileName       : OrgnztEntity
  * author         : hanslee
@@ -32,13 +34,16 @@ public class OrgnztEntity {
     @NotNull
     // @ColumnDefault("") // 테이블 create 부분 상에서는 defaultValue 가 '' 이나, 우선 따르지 않기로 함
     @Column(name="ORGNZT_ID", length=20)
+    @Comment("조직ID")
     private String orgnztId;
     
     @NotNull
     @Column(name="ORGNZT_NM", length=20)
+    @Comment("조직명")
     private String orgnztNm;
     
     @Column(name="ORGNZT_DC", length=100)
+    @Comment("조직설명")
     private String orgnztDc;
     
     @Builder
