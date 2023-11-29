@@ -5,11 +5,16 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Comment;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name="TB_ENTRPRS_MBR_M")
 public class EntrprsMberEntity {
 

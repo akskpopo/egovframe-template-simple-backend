@@ -7,7 +7,11 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Comment;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name="TB_CL_CODE_M")
 public class ClCodeEntity {
 

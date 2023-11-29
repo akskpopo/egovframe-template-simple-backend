@@ -28,7 +28,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
 @ToString
 @Entity

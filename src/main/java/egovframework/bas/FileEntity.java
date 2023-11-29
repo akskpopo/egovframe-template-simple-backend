@@ -9,7 +9,11 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Comment;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name="TB_FILE_M")
 public class FileEntity {
 	

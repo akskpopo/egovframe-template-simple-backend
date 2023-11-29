@@ -5,11 +5,16 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Comment;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name="TB_GNRL_MBR_M")
 public class GnrlMberEntity {
 
@@ -84,7 +89,6 @@ public class GnrlMberEntity {
 	@Column(name="MBER_FXNUM")
     @Comment("회원팩스번호")
 	private String mberFxnum; // varchar(20) default null,
-	
 	
 	@Column(name="GROUP_ID")
     @Comment("그룹ID")
