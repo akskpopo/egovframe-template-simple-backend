@@ -11,8 +11,10 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Comment;
 
+import egovframework.bas.BaseEntity;
+
 /**
- * fileName       : OrgnztEntity
+ * fileName       : OrgEntity
  * author         : hanslee
  * date           : 2023/11/27
  * description    :
@@ -20,39 +22,30 @@ import org.hibernate.annotations.Comment;
  * DATE              AUTHOR             NOTE
  * -----------------------------------------------------------
  * 2023/11/27        hanslee       최초 생성
+ * 2023/11/30        hanslee	엔티티명 변경 및 BaseEntity 상속 추가 등
  */
 
-@Getter
-@Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Builder
-@ToString
 @Entity
-@Table(name="TB_ORGNZT_M")
-public class OrgnztEntity {
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@EqualsAndHashCode(callSuper=false)
+@ToString
+@Table(name="TB_ORG_M")
+public class OrgEntity extends BaseEntity {
 	
     @Id
-    @NotNull
-    // @ColumnDefault("") // 테이블 create 부분 상에서는 defaultValue 가 '' 이나, 우선 따르지 않기로 함
-    @Column(name="ORGNZT_ID", length=20)
+    @Column(name="ORG_ID", length=20, nullable=false)
     @Comment("조직ID")
-    private String orgnztId;
+    private String orgId;
     
     @NotNull
-    @Column(name="ORGNZT_NM", length=20)
+    @Column(name="ORG_NM", length=20, nullable=false)
     @Comment("조직명")
-    private String orgnztNm;
+    private String orgNm;
     
-    @Column(name="ORGNZT_DC", length=100)
+    @Column(name="ORG_DESC", length=100)
     @Comment("조직설명")
-    private String orgnztDc;
-    
-    @Builder
-	public OrgnztEntity(String orgnztId, String orgnztNm, String orgnztDc) {
-		super();
-		this.orgnztId = orgnztId;
-		this.orgnztNm = orgnztNm;
-		this.orgnztDc = orgnztDc;
-	}
+    private String orgDesc;
     
 }

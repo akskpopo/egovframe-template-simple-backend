@@ -1,6 +1,5 @@
 package egovframework.bbs;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -15,7 +14,6 @@ import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.GenericGenerator;
 
 import egovframework.bas.BaseEntity;
-import egovframework.bas.FileEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,7 +22,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * fileName       : BbsUseEntity
+ * fileName       : BbsAnsrEntity
  * author         : hanslee
  * date           : 2023/11/27
  * description    :
@@ -40,32 +38,29 @@ import lombok.ToString;
 @NoArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Table(name="TB_BBS_USE_M")
-public class BbsUseEntity extends BaseEntity {
-	
+@Table(name="TB_BBS_ANSR_M")
+public class BbsAnsrEntity extends BaseEntity {
+
 	@Id
 	@GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "bbsDtlId", strategy = "org.hibernate.id.UUIDGenerator")
-	@Column(name="BBS_USE_ID", length=32, nullable=false)
+    @GenericGenerator(name = "bbsAnsrId", strategy = "org.hibernate.id.UUIDGenerator")
+	@Column(name="BBS_ANSR_ID", length=32, nullable=false)
     @Comment("UUID")
-	private String bbsUseId;
+	private String bbsAnsrId;
 	
-	/* 원래의 PK1, FK */ 
+	/* 원래의 PK, FK*/
 	@ManyToOne
     @JoinColumn(name="BBS_ID", nullable = false)
     private BbsEntity bbsEntity;
 	
-	@Column(name="TRGT_ID", length=20, nullable = false)
-    @Comment("대상ID")
-	private String trgtId; // char(20) not null default '',
+	@Column(name="ANSR_YN", length=1, nullable=false)
+    @Comment("답변여부")
+	private String ansrYn; // char(1) not null default '',
 	
-	@Column(name="USE_YN", length=1, nullable = false)
-    @Comment("사용여부")
-	private String useYn; // char(1) not null,
 	
-	@Column(name="REG_DIVS_CD", length=6)
-    @Comment("등록구분코드")
-	private String regDivsCd; // char(6) default null,
-	
-
+	/* // 본래 테이블에는 존재하나, 우선 주석처리하여 사용하지 않음
+	@Column(name="STSFDG_YN")
+    @Comment("만족도조사")
+	private String stsfdgYn; // char(1) not null default '',
+    */
 }

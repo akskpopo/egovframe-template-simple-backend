@@ -6,106 +6,85 @@ import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Comment;
 
+import egovframework.bas.BaseEntity;
+import egovframework.bas.FileEntity;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+/**
+ * fileName       : BbsEntity
+ * author         : hanslee
+ * date           : 2023/11/27
+ * description    :
+ * ===========================================================
+ * DATE              AUTHOR             NOTE
+ * -----------------------------------------------------------
+ * 2023/11/27        shchun		최초 생성
+ * 2023/11/30        hanslee	엔티티명 변경 및 BaseEntity 상속 추가 등
+ */
 
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name="TB_BBS_D")
-public class BbsEntity {
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@EqualsAndHashCode(callSuper=false)
+@Table(name="TB_BBS_M")
+public class BbsEntity extends BaseEntity {
+	
 	@Id
-    @Comment(value = "UUID")
-	@Column(name="BBS_DTL_ID")
-	private String bbsDtlId;
-
-    @Comment(value = "게시물ID")
-	@Column(name="NTT_ID")
-	private String nttId; // decimal(20,0) not null,
-
-    @Comment(value = "게시판ID")
-	@Column(name="BBS_ID")
-	private String bbsId; // char(20) not null,
-
-    @Comment(value = "게시물번호")
-	@Column(name="NTT_NO")
-	private BigDecimal nttNo; // decimal(20,0) default null,
-
-    @Comment(value = "게시물제목")
-	@Column(name="NTT_SJ")
-	private String nttSj; // varchar(2000) default null,
-
-    @Comment(value = "게시물내용")
-	@Column(name="NTT_CN")
-	private String nttCn; // mediumtext,
-
-    @Comment(value = "답변여부")
-	@Column(name="ANSWER_YN")
-	private String answerYn; // char(1) default null,
-
-    @Comment(value = "부모글번호")
-	@Column(name="PARNTSCTT_NO")
-	private BigDecimal parntscttNo; // decimal(10,0) default null,
-
-    @Comment(value = "답변위치")
-	@Column(name="ANSWER_LC")
-	private Integer answerLc; // int(11) default null,
-
-    @Comment(value = "정렬순서")
-	@Column(name="SORT_ORDR")
-	private BigDecimal sortOrdr; // decimal(8,0) default null,
-
-    @Comment(value = "")
-	@Column(name="RDCNT")
-	private BigDecimal rdcnt; // decimal(10,0) default null,
-
-    @Comment(value = "사용여부")
-	@Column(name="USE_YN")
+	@Column(name="BBS_ID", length=20, nullable=false)
+    @Comment("게시판ID")
+	private String bbsId; // char(20) not null, 
+	
+	@Column(name="BBS_NM", length=255, nullable=false)
+    @Comment("게시판명")
+	private String bbsNm; // varchar(255) not null,
+	
+	@Column(name="BBS_DESC", length=2400)
+    @Comment("게시판설명")
+	private String bbsDesc; // varchar(2400) default null,
+	
+	@Column(name="BBS_KD_CD", length=6)
+    @Comment("게시판유형코드")
+	private String bbsKdCd; // char(6) not null,
+	
+	@Column(name="BBS_ATTR_CD", length=6)
+    @Comment("게시판속성코드")
+	private String bbsAttrCd; // char(6) not null,
+	
+	@Column(name="RPLY_PSBL_YN", length=1, nullable=false)
+    @Comment("답변가능여부")
+	private String rplyPsblYn; // char(1) default null,
+	
+	@Column(name="FILE_ATCH_PSBL_YN", length=1, nullable=false)
+    @Comment("파일첨부가능여부")
+	private String fileAtchPsblYn; // char(1) not null,
+	
+	@Column(name="ATCH_PSBL_FILE_NUM", precision=2, scale=0, nullable=false)
+    @Comment("파일첨부가능개수")
+	private BigDecimal atchPsblFileNumber; // decimal(2,0) not null,
+	
+	@Column(name="ATCH_PSBL_FILE_SIZE", precision=8, scale=0)
+    @Comment("파일첨부가능용량")
+	private BigDecimal atchPsblFileSize; // decimal(8,0) default null,
+	
+	@Column(name="USE_YN", length=1, nullable=false)
+    @Comment("사용여부")
 	private String useYn; // char(1) not null,
-
-    @Comment(value = "게시시작일")
-	@Column(name="NTCE_BGNDE")
-	private String ntceBgnde; // char(20) default null,
-
-    @Comment(value = "게시종료일")
-	@Column(name="NTCE_ENDDE")
-	private String ntceEndde; // char(20) default null,
-
-    @Comment(value = "게시자ID")
-	@Column(name="NTCR_ID")
-	private String ntcrId; // varchar(20) default null,
-
-    @Comment(value = "게시자명")
-	@Column(name="NTCR_NM")
-	private String ntcrNm; // varchar(20) default null,
-
-    @Comment(value = "비밀번호")
-	@Column(name="PASSWORD")
-	private String password; // varchar(200) default null,
+	
+	@Column(name="TMPLT_ID")
+    @Comment("템플릿ID")
+	private String tmpltId; // char(20) default null,
 	
 
-    @Comment(value = "첨부파일ID")
-	@Column(name="ATCH_FILE_ID")
-	private String atchFileId; // char(20) default null,
-	
-
-    @Comment(value = "최초등록시점")
-	@Column(name="FRST_REGIST_PNTTM")
-    private LocalDateTime frstRegistPnttm;
-
-    @Comment(value = "최초등록자ID")
-    @Column(name="FRST_REGISTER_ID", length=20)
-    private String frstRegisterId;
-
-    @Comment(value = "최종수정시점")
-    @Column(name="LAST_UPDT_PNTTM")
-    private LocalDateTime lastUpdtPnttm;
-
-    @Comment(value = "최종수정자ID")
-    @Column(name="LAST_UPDUSR_ID", length=20)
-    private String lastUpdUsrId; 
 }
