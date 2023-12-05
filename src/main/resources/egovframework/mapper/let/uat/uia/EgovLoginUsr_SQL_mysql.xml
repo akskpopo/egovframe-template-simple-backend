@@ -30,18 +30,16 @@
 	<select id="actionLogin" resultMap="login">
 		<if test="userSe == &quot;USR&quot;">
 			
-            SELECT EMPLYR_ID AS id
+            SELECT USER_ID AS id
                  , USER_NM AS name
-                 , PASSWORD AS password
-                 , IHIDNUM AS ihidNum
-                 , EMAIL_ADRES AS email
+                 , PWD AS password
+                 , emal_adrs AS email
                  , 'USR' AS userSe
-                 , ORGNZT_ID AS orgnztId
-                 , ESNTL_ID AS uniqId
-              FROM LETTNEMPLYRINFO
-             WHERE EMPLYR_ID = #{id}
-               AND PASSWORD = #{password}
-               AND EMPLYR_STTUS_CODE = 'P'
+                 , org_id AS orgnztId
+              FROM tb_user_m
+             WHERE USER_ID = #{id}
+               AND PWD = #{password}
+               AND USER_STUS_CD = 'P'
 			
 		</if>
 	</select>

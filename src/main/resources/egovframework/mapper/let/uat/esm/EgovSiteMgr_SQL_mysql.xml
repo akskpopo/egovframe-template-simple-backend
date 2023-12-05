@@ -5,9 +5,9 @@
 
 	<!-- 사이트관리자용 변경된 비밀번호를 저장하는 쿼리 -->
 	<update id="updateAdminPassword" parameterType="java.util.Map">
-		UPDATE LETTNEMPLYRINFO
-			SET password = #{new_password}
-		WHERE emplyr_id = #{login_id} AND password = #{old_password}
+		UPDATE TB_AUTH_MBR_M
+			SET PWD = #{new_password}
+		WHERE AUTH_MBT_ID = #{login_id} AND PWD = #{old_password}
 	</update>
 
 </mapper>

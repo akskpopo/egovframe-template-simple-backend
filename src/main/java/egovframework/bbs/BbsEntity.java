@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Comment;
 
@@ -75,7 +76,7 @@ public class BbsEntity extends BaseEntity {
 	private BigDecimal atchPsblFileNumber; // decimal(2,0) not null,
 	
 	@Column(name="ATCH_PSBL_FILE_SIZE", precision=8, scale=0)
-    @Comment("파일첨부가능용량")
+    @Comment("파일첨부가능파일용량")
 	private BigDecimal atchPsblFileSize; // decimal(8,0) default null,
 	
 	@Column(name="USE_YN", length=1, nullable=false)

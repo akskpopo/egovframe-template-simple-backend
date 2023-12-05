@@ -88,9 +88,9 @@ public class UserEntity extends BaseEntity {
     @Comment("소속기관코드")
     private String pstinstCd;
     
-    @Column(name="EMP_STUS_CD", length=15, nullable=false)
+    @Column(name="USER_STUS_CD", length=15, nullable=false)
     @Comment("사용자상태코드")
-    private String empStusCd;
+    private String userStusCd;
     
     /* 
     @Column(name="ESNTL_ID", length=20)
