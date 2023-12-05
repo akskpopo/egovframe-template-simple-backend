@@ -9,6 +9,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
+
 
 /**
  * 
@@ -33,11 +35,11 @@ public abstract class NullUtil {
     
     
     public static boolean isNone(String value) {
-        return value == null || value.length() == 0;
+        return StringUtils.isEmpty(value);
     }
     
     public static boolean isExctNone(String value) {
-        return value == null || value.trim().length() == 0;
+        return value == null ? true : (value.trim().length() == 0 ? true : false);
     }
     
     public static boolean notNone(String value) {
