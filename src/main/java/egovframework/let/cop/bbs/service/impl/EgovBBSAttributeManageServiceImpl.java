@@ -75,7 +75,7 @@ public class EgovBBSAttributeManageServiceImpl extends EgovAbstractServiceImpl i
 	BoardUseInf bdUseInf = new BoardUseInf();
 
 	bdUseInf.setBbsId(boardMaster.getBbsId());
-	bdUseInf.setLastUpdusrId(boardMaster.getLastUpdusrId());
+	bdUseInf.setLastUpdusrId(boardMaster.getDataUpdId());
 
 	bbsUseDAO.deleteBBSUseInfByBoardId(bdUseInf);
     }
@@ -104,20 +104,20 @@ public class EgovBBSAttributeManageServiceImpl extends EgovAbstractServiceImpl i
 	    BoardUseInf bdUseInf = new BoardUseInf();
 
 	    bdUseInf.setBbsId(bbsId);
-	    bdUseInf.setTrgetId(boardMaster.getTrgetId());
-	    bdUseInf.setRegistSeCode(boardMaster.getRegistSeCode());
-	    bdUseInf.setFrstRegisterId(boardMaster.getFrstRegisterId());
+	    bdUseInf.setTrgetId(boardMaster.getTrgtId());
+	    bdUseInf.setRegistSeCode(boardMaster.getRegKdCd());
+	    bdUseInf.setFrstRegisterId(boardMaster.getDataInptId());
 	    bdUseInf.setUseAt("Y");
 
 	    bbsUseDAO.insertBBSUseInf(bdUseInf);
 
 	    UserInfVO userVO = new UserInfVO();
-	    userVO.setTrgetId(boardMaster.getTrgetId());
+	    userVO.setTrgetId(boardMaster.getTrgtId());
 
 	    List<UserInfVO> tmpList = null;
 	    Iterator<UserInfVO> iter = null;
 
-	    if ("REGC05".equals(boardMaster.getRegistSeCode())) {
+	    if ("REGC05".equals(boardMaster.getRegKdCd())) {
 		tmpList = userService.selectAllClubUser(userVO);
 		iter = tmpList.iterator();
 		while (iter.hasNext()) {
@@ -127,11 +127,11 @@ public class EgovBBSAttributeManageServiceImpl extends EgovAbstractServiceImpl i
 		    bdUseInf.setTrgetId(((UserInfVO)iter.next()).getUniqId());
 		    bdUseInf.setRegistSeCode("REGC07");
 		    bdUseInf.setUseAt("Y");
-		    bdUseInf.setFrstRegisterId(boardMaster.getFrstRegisterId());
+		    bdUseInf.setFrstRegisterId(boardMaster.getDataInptId());
 
 		    bbsUseDAO.insertBBSUseInf(bdUseInf);
 		}
-	    } else if ("REGC06".equals(boardMaster.getRegistSeCode())) {
+	    } else if ("REGC06".equals(boardMaster.getRegKdCd())) {
 		tmpList = userService.selectAllCmmntyUser(userVO);
 		iter = tmpList.iterator();
 		while (iter.hasNext()) {
@@ -141,7 +141,7 @@ public class EgovBBSAttributeManageServiceImpl extends EgovAbstractServiceImpl i
 		    bdUseInf.setTrgetId(((UserInfVO)iter.next()).getUniqId());
 		    bdUseInf.setRegistSeCode("REGC07");
 		    bdUseInf.setUseAt("Y");
-		    bdUseInf.setFrstRegisterId(boardMaster.getFrstRegisterId());
+		    bdUseInf.setFrstRegisterId(boardMaster.getDataInptId());
 
 		    bbsUseDAO.insertBBSUseInf(bdUseInf);
 		}
@@ -230,7 +230,7 @@ public class EgovBBSAttributeManageServiceImpl extends EgovAbstractServiceImpl i
 	    BoardMasterVO options = addedOptionsDAO.selectAddedOptionsInf(boardMaster);
 
 	    if (options == null) {
-		boardMaster.setFrstRegisterId(boardMaster.getLastUpdusrId());
+		boardMaster.setDataInptId(boardMaster.getDataUpdId());
 		addedOptionsDAO.insertAddedOptionsInf(boardMaster);
 	    } else {
 		//수정 기능 제외 (새롭게 선택사항을 지정한 insert만 처리함)

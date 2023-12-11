@@ -54,7 +54,7 @@ public class EgovBBSLoneMasterServiceImpl extends EgovAbstractServiceImpl implem
 	BoardUseInf bdUseInf = new BoardUseInf();
 	
 	bdUseInf.setBbsId(boardMaster.getBbsId());
-	bdUseInf.setLastUpdusrId(boardMaster.getLastUpdusrId());
+	bdUseInf.setLastUpdusrId(boardMaster.getDataUpdId());
 	
 	bbsUseDAO.deleteBBSUseInfByBoardId(bdUseInf);
     }
@@ -77,7 +77,7 @@ public class EgovBBSLoneMasterServiceImpl extends EgovAbstractServiceImpl implem
 	bdUseInf.setBbsId(bbsId);
 	bdUseInf.setTrgetId("SYSTEM_DEFAULT_BOARD");
 	bdUseInf.setRegistSeCode("REGC01");
-	bdUseInf.setFrstRegisterId(boardMaster.getFrstRegisterId());
+	bdUseInf.setFrstRegisterId(boardMaster.getDataInptId());
 	bdUseInf.setUseAt("Y");
 
 	bbsUseDAO.insertBBSUseInf(bdUseInf);

@@ -76,12 +76,12 @@ public class EgovMainApiController {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 
-		paginationInfo.setCurrentPageNo(boardVO.getPageIndex());
+		paginationInfo.setCurrentPageNo(boardVO.getPageIdx());
 		paginationInfo.setRecordCountPerPage(boardVO.getPageUnit());
 		paginationInfo.setPageSize(boardVO.getPageSize());
 
-		boardVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-		boardVO.setLastIndex(paginationInfo.getLastRecordIndex());
+		boardVO.setFrstIdx(paginationInfo.getFirstRecordIndex());
+		boardVO.setLastIdx(paginationInfo.getLastRecordIndex());
 		boardVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
 		Map<String, Object> map = bbsMngService.selectBoardArticles(boardVO, "BBSA02");

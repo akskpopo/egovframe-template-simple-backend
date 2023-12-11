@@ -147,7 +147,7 @@ public class EgovBBSUseInfoManageApiController {
 		BoardMasterVO boardMasterVO) throws Exception {
 		ResultVO resultVO = new ResultVO();
 
-		boardMasterVO.setFirstIndex(0);
+		boardMasterVO.setFrstIdx(0);
 		Map<String, Object> resultMap = bbsAttrbService.selectNotUsedBdMstrList(boardMasterVO);
 
 		resultVO.setResult(resultMap);

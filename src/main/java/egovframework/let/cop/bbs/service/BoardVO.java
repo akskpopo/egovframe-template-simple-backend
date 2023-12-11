@@ -37,25 +37,25 @@ public class BoardVO extends Board implements Serializable {
 	private static final long serialVersionUID = -3779821913760046011L;
 
 	@Schema(description = "검색시작일")
-	private String searchBgnDe = "";
+	private String schBgnDt = ""; // searchBgnDe = "";
 
 	@Schema(description = "검색조건")
-	private String searchCnd = "";
+	private String schCnd = ""; // searchCnd = "";
 
 	@Schema(description = "검색종료일")
-	private String searchEndDe = "";
+	private String schEndDt = ""; // searchEndDe = "";
 
 	@Schema(description = "검색단어")
-	private String searchWrd = "";
+	private String schWrd = ""; // searchWrd = "";
 
 	@Schema(description = "정렬순서(DESC,ASC)")
-	private long sortOrdr = 0L;
+	private long sortOrd = 0L; // sortOrdr = 0L;
 
 	@Schema(description = "검색사용여부")
-	private String searchUseYn = "";
+	private String schUseYn = ""; // searchUseYn = "";
 
 	@Schema(description = "현재페이지")
-	private int pageIndex = 1;
+	private int pageIdx = 1; // pageIndex = 1;
 
 	@Schema(description = "페이지갯수")
 	private int pageUnit = 10;
@@ -64,10 +64,10 @@ public class BoardVO extends Board implements Serializable {
 	private int pageSize = 10;
 
 	@Schema(description = "첫페이지 인덱스")
-	private int firstIndex = 1;
+	private int frstIdx = 1; // firstIndex = 1;
 
 	@Schema(description = "마지막페이지 인덱스")
-	private int lastIndex = 1;
+	private int lastIdx = 1; // lastIndex = 1;
 
 	@Schema(description = "페이지당 레코드 개수")
 	private int recordCountPerPage = 10;
@@ -76,37 +76,37 @@ public class BoardVO extends Board implements Serializable {
 	private int rowNo = 0;
 
 	@Schema(description = "최초 등록자명")
-	private String frstRegisterNm = "";
+	private String dataInptNm = ""; // frstRegisterNm = "";
 
 	@Schema(description = "최종 수정자명")
-	private String lastUpdusrNm = "";
+	private String dataUpdNm = ""; // lastUpdusrNm = "";
 
 	@Schema(description = "유효여부")
 	private String isExpired = "N";
 
 	@Schema(description = "상위 정렬 순서")
-	private String parntsSortOrdr = "";
+	private String prntsSortOrd = ""; //parntsSortOrdr = "";
 
 	@Schema(description = "상위 답변 위치")
-	private String parntsReplyLc = "";
+	private String prntsRplyLoc = ""; // parntsReplyLc = "";
 
 	@Schema(description = "게시판 유형코드")
-	private String bbsTyCode = "";
+	private String bbsKdCd = ""; // bbsTyCode = "";
 
 	@Schema(description = "게시판 속성코드")
-	private String bbsAttrbCode = "";
+	private String bbsAttrCd = ""; // bbsAttrbCode = "";
 
 	@Schema(description = "게시판 명")
 	private String bbsNm = "";
 
 	@Schema(description = "파일첨부가능여부")
-	private String fileAtchPosblAt = "";
-
+	private String fileAtchPsblYn = ""; // fileAtchPosblAt = "";
+ 
 	@Schema(description = "첨부가능파일숫자")
-	private int posblAtchFileNumber = 0;
+	private int atchFilePsblNum = 0; // posblAtchFileNumber = 0;
 
 	@Schema(description = "답장가능여부")
-	private String replyPosblAt = "";
+	private String rplyPsblYn = ""; // replyPosblAt = "";
 
 	@Schema(description = "조회 수 증가 여부")
 	private boolean plusCount = false;
@@ -115,9 +115,9 @@ public class BoardVO extends Board implements Serializable {
 	// 2009.06.29 : 2단계 기능 추가
 	//---------------------------------
 	@Schema(description = "하위 페이지 인덱스 (댓글 및 만족도 조사 여부 확인용)")
-	private String subPageIndex = "";
+	private String subPageIdx = ""; //subPageIndex = "";
 	////-------------------------------
-
+	
 	/**
 	 * toString 메소드를 대치한다.
 	 */

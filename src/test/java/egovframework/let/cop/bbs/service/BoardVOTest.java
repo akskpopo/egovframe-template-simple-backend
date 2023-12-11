@@ -20,12 +20,12 @@ public class BoardVOTest{
         BoardVO boardVO = new BoardVO();
         boardVO.setBbsId("TestId");
         boardVO.setBbsNm("게시판nm");
-        boardVO.setFrstRegisterId("FrstId");
+        boardVO.setDataInptId("FrstId");
         boardVO.setNttNo(3L);
 
 
         org.junit.Assert.assertEquals( boardVO.getBbsId() , "TestId" );
-        org.junit.Assert.assertEquals( boardVO.getFrstRegisterId() , "FrstId" );
+        org.junit.Assert.assertEquals( boardVO.getDataInptId() , "FrstId" );
         org.junit.Assert.assertEquals( boardVO.getNttNo() , 3L );
         org.junit.Assert.assertEquals( boardVO.getBbsNm() , "게시판nm" );
     }

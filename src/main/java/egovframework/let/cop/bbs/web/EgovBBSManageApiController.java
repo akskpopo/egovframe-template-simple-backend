@@ -167,15 +167,15 @@ public class EgovBBSManageApiController {
 		BoardMasterVO master = bbsAttrbService.selectBBSMasterInf(vo);
 
 		PaginationInfo paginationInfo = new PaginationInfo();
-		paginationInfo.setCurrentPageNo(boardVO.getPageIndex());
+		paginationInfo.setCurrentPageNo(boardVO.getPageIdx());
 		paginationInfo.setRecordCountPerPage(propertyService.getInt("Globals.pageUnit"));
 		paginationInfo.setPageSize(propertyService.getInt("Globals.pageSize"));
 
-		boardVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-		boardVO.setLastIndex(paginationInfo.getLastRecordIndex());
+		boardVO.setFrstIdx(paginationInfo.getFirstRecordIndex());
+		boardVO.setLastIdx(paginationInfo.getLastRecordIndex());
 		boardVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
-		Map<String, Object> resultMap = bbsMngService.selectBoardArticles(boardVO, vo.getBbsAttrbCode());
+		Map<String, Object> resultMap = bbsMngService.selectBoardArticles(boardVO, vo.getBbsAttrCd());
 
 		int totCnt = Integer.parseInt((String)resultMap.get("resultCnt"));
 		paginationInfo.setTotalRecordCount(totCnt);
@@ -220,12 +220,12 @@ public class EgovBBSManageApiController {
 		//---------------------------------
 		// 2009.06.29 : 2단계 기능 추가
 		//---------------------------------
-		if (!boardVO.getSubPageIndex().equals("")) {
+		if (!boardVO.getSubPageIdx().equals("")) {
 			boardVO.setPlusCount(false);
 		}
 		////-------------------------------
 
-		boardVO.setLastUpdusrId(user.getUniqId());
+		boardVO.setDataUpdId(user.getUniqId());
 		BoardVO vo = bbsMngService.selectBoardArticle(boardVO);
 
 		//----------------------------
@@ -326,9 +326,9 @@ public class EgovBBSManageApiController {
 			}
 		}
 
-		boardVO.setLastUpdusrId(user.getUniqId());
+		boardVO.setDataUpdId(user.getUniqId());
 		boardVO.setNtcrNm(""); // dummy 오류 수정 (익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨) 
-		boardVO.setPassword(EgovFileScrty.encryptPassword("", user.getUniqId())); // dummy 오류 수정 (익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨)
+		boardVO.setPwd(EgovFileScrty.encryptPassword("", user.getUniqId())); // dummy 오류 수정 (익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨)
 		boardVO.setNttCn(unscript(boardVO.getNttCn())); // XSS 방지
 
 		bbsMngService.updateBoardArticle(boardVO);
@@ -387,11 +387,11 @@ public class EgovBBSManageApiController {
 			atchFileId = fileMngService.insertFileInfs(result);
 		}
 		boardVO.setAtchFileId(atchFileId);
-		boardVO.setFrstRegisterId(user.getUniqId());
+		boardVO.setDataInptId(user.getUniqId());
 		boardVO.setBbsId(boardVO.getBbsId());
 
 		boardVO.setNtcrNm(""); // dummy 오류 수정 (익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨)
-		boardVO.setPassword(EgovFileScrty.encryptPassword("", user.getUniqId())); // dummy 오류 수정 (익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨)
+		boardVO.setPwd(EgovFileScrty.encryptPassword("", user.getUniqId())); // dummy 오류 수정 (익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨)
 		// board.setNttCn(unscript(board.getNttCn())); // XSS 방지
 
 		bbsMngService.insertBoardArticle(boardVO);
@@ -450,15 +450,15 @@ public class EgovBBSManageApiController {
 		}
 
 		boardVO.setAtchFileId(atchFileId);
-		boardVO.setReplyAt("Y");
-		boardVO.setFrstRegisterId(user.getUniqId());
+		boardVO.setRplyYn("Y");
+		boardVO.setDataInptId(user.getUniqId());
 		boardVO.setBbsId(boardVO.getBbsId());
 		boardVO.setParnts(Long.toString(boardVO.getNttId()));
-		boardVO.setSortOrdr(boardVO.getSortOrdr());
-		boardVO.setReplyLc(Integer.toString(Integer.parseInt(boardVO.getReplyLc()) + 1));
+		boardVO.setSortOrd(boardVO.getSortOrd());
+		boardVO.setRplyLoc(Integer.toString(Integer.parseInt(boardVO.getRplyLoc()) + 1));
 
 		boardVO.setNtcrNm(""); // dummy 오류 수정 (익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨)
-		boardVO.setPassword(EgovFileScrty.encryptPassword("", user.getUniqId())); // dummy 오류 수정 (익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨)
+		boardVO.setPwd(EgovFileScrty.encryptPassword("", user.getUniqId())); // dummy 오류 수정 (익명이 아닌 경우 validator 처리를 위해 dummy로 지정됨)
 
 		boardVO.setNttCn(unscript(boardVO.getNttCn())); // XSS 방지
 
@@ -499,7 +499,7 @@ public class EgovBBSManageApiController {
 		ResultVO resultVO = new ResultVO();
 
 		boardVO.setNttId(Long.parseLong(nttId));
-		boardVO.setLastUpdusrId(user.getUniqId());
+		boardVO.setDataUpdId(user.getUniqId());
 
 		bbsMngService.deleteBoardArticle(boardVO);
 		

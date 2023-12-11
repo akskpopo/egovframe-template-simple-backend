@@ -19,11 +19,11 @@ public class BoardTest{
     public void Board() {
         Board board = new Board();
         board.setBbsId("TestId");
-        board.setFrstRegisterId("FrstId");
+        board.setDataInptId("FrstId");
         board.setNttNo(3L);
 
         org.junit.Assert.assertEquals( board.getBbsId() , "TestId" );
-        org.junit.Assert.assertEquals( board.getFrstRegisterId() , "FrstId" );
+        org.junit.Assert.assertEquals( board.getDataInptId() , "FrstId" );
         org.junit.Assert.assertEquals( board.getNttNo() , 3L );
     }
 

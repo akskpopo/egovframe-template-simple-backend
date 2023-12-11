@@ -36,7 +36,7 @@ public class BoardMaster implements Serializable {
 	private static final long serialVersionUID = 2821358749509367821L;
 
 	@Schema(description = "게시판 속성코드")
-    private String bbsAttrbCode = "";
+    private String bbsAttrCd = "";
 
 	@Schema(description = "게시판 아이디")
     private String bbsId = "";
@@ -48,52 +48,52 @@ public class BoardMaster implements Serializable {
     private String bbsNm = "";
 
 	@Schema(description = "게시판 유형코드")
-    private String bbsTyCode = "";
+    private String bbsKdCd = "";
 
 	@Schema(description = "파일첨부가능여부")
-    private String fileAtchPosblAt = "";
+    private String fileAtchPsblYn = "";
 
 	@Schema(description = "최초등록자 아이디")
-    private String frstRegisterId = "";
+    private String dataInptId = "";
 
 	@Schema(description = "최초등록시점")
-    private String frstRegisterPnttm = "";
+    private String dataInptDttm = "";
 
 	@Schema(description = "최종수정자 아이디")
-    public String lastUpdusrId = "";
+    public String dataUpdId = "";
 
 	@Schema(description = "최종수정시점")
-    private String lastUpdusrPnttm = "";
+    private String dataUpdDttm = "";
 
 	@Schema(description = "첨부가능파일숫자")
-    private int posblAtchFileNumber = 0;
+    private int psblAtchFileNum = 0;
 
 	@Schema(description = "첨부가능파일사이즈")
-    private String posblAtchFileSize = "";
+    private String psblAtchFileSize = "";
 
 	@Schema(description = "답장가능여부")
-    private String replyPosblAt = "";
+    private String rplyPsblYn = "";
 
 	@Schema(description = "템플릿 아이디")
-    private String tmplatId = "";
+    private String tmpltId = "";
 
 	@Schema(description = "사용여부")
-    private String useAt = "";
+    private String useYn = "";
 
 	@Schema(description = "사용플래그")
     private String bbsUseFlag = "";
 
 	@Schema(description = "대상 아이디")
-    private String trgetId = "";
+    private String trgtId = "";
 
 	@Schema(description = "등록구분코드")
-    private String registSeCode = "";
+    private String regKdCd = "";
 
 	@Schema(description = "유일 아이디")
     private String uniqId = "";
 
 	@Schema(description = "템플릿 명")
-    private String tmplatNm = "";
+    private String tmpltNm = "";
 
     //---------------------------------
     // 2009.06.26 : 2단계 기능 추가

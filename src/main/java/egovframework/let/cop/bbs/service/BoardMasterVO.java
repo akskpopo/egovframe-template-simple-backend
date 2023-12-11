@@ -36,25 +36,25 @@ public class BoardMasterVO extends BoardMaster implements Serializable {
 	private static final long serialVersionUID = -8070768280461816170L;
 
 	@Schema(description = "검색시작일")
-	private String searchBgnDe = "";
+	private String schBgnDt = "";
 
 	@Schema(description = "검색조건")
-	private String searchCnd = "";
+	private String schCnd = "";
 
 	@Schema(description = "검색종료일")
-	private String searchEndDe = "";
+	private String schEndDt = "";
 
 	@Schema(description = "검색단어")
-	private String searchWrd = "";
+	private String schWrd = "";
 
 	@Schema(description = "정렬순서(DESC,ASC)")
-	private String sortOrdr = "";
+	private String sortOrd = "";
 
 	@Schema(description = "검색사용여부")
-	private String searchUseYn = "";
+	private String schUseYn = "";
 
 	@Schema(description = "현재페이지")
-	private int pageIndex = 1;
+	private int pageIdx = 1;
 
 	@Schema(description = "페이지갯수")
 	private int pageUnit = 10;
@@ -63,10 +63,10 @@ public class BoardMasterVO extends BoardMaster implements Serializable {
 	private int pageSize = 10;
 
 	@Schema(description = "첫페이지 인덱스")
-	private int firstIndex = 1;
+	private int frstIdx = 1;
 
 	@Schema(description = "마지막페이지 인덱스")
-	private int lastIndex = 1;
+	private int lastIdx = 1;
 
 	@Schema(description = "페이지당 레코드 개수")
 	private int recordCountPerPage = 10;
@@ -75,16 +75,16 @@ public class BoardMasterVO extends BoardMaster implements Serializable {
 	private int rowNo = 0;
 
 	@Schema(description = "최초 등록자명")
-	private String frstRegisterNm = "";
+	private String dataInptNm = "";
 
 	@Schema(description = "게시판유형 코드명")
-	private String bbsTyCodeNm = "";
+	private String bbsKdCdNm = "";
 
 	@Schema(description = "게시판속성 코드명")
-	private String bbsAttrbCodeNm = "";
+	private String bbsAttrCdNm = "";
 
 	@Schema(description = "최종 수정자명")
-	private String lastUpdusrNm = "";
+	private String dataUpdNm = "";
 
 	@Schema(description = "권한지정 여부")
 	private String authFlag = "";

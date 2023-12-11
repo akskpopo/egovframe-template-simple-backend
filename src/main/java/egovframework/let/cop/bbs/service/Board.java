@@ -42,22 +42,22 @@ public class Board implements Serializable {
 	private String bbsId = "";
 
 	@Schema(description = "최초등록자 아이디")
-	private String frstRegisterId = "";
+	private String dataInptId = "";
 
 	@Schema(description = "최초등록시점")
-	private String frstRegisterPnttm = "";
+	private String dataInptDttm = "";
 
 	@Schema(description = "최종수정자 아이디")
-	private String lastUpdusrId = "";
+	private String dataUpdId = "";
 
 	@Schema(description = "최종수정시점")
-	private String lastUpdusrPnttm = "";
+	private String dataUpdDttm = "";
 
 	@Schema(description = "게시시작일")
-	private String ntceBgnde = "";
+	private String ntceBgnDt = "";
 
 	@Schema(description = "게시종료일")
-	private String ntceEndde = "";
+	private String ntceEndDt = "";
 
 	@Schema(description = "게시자 아이디")
 	private String ntcrId = "";
@@ -81,28 +81,28 @@ public class Board implements Serializable {
 	private String parnts = "0";
 
 	@Schema(description = "패스워드")
-	private String password = "";
+	private String pwd = "";
 
 	@Schema(description = "조회수")
-	private int inqireCo = 0;
+	private int readCnt = 0;
 
 	@Schema(description = "답장여부")
-	private String replyAt = "";
+	private String rplyYn = "";
 
 	@Schema(description = "답장위치")
-	private String replyLc = "0";
+	private String rplyLoc = "0";
 
 	@Schema(description = "정렬순서(DESC,ASC)")
-	private long sortOrdr = 0L;
+	private long sortOrd = 0L;
 
 	@Schema(description = "사용여부", allowableValues = {"Y", "N"})
-	private String useAt = "";
+	private String useYn = "";
 	
 	@Schema(description = "게시 종료일")
-	private String ntceEnddeView = "";
+	private String ntceEndDtView = "";
 	
 	@Schema(description = "게시 시작일")
-	private String ntceBgndeView = "";
+	private String ntceBgnDtView = "";
 
 	/**
 	 * toString 메소드를 대치한다.

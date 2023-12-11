@@ -34,11 +34,11 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper=false)
 @ToString
-@Table(name="TB_IDS_M")
+@Table(name="IDS")
 public class IdsEntity extends BaseEntity {
 	
 	@Id
-	@Column(name="TB_NM", length=20, nullable=false)
+	@Column(name="TABLE_NAME", length=20, nullable=false)
     @Comment("테이블명")
 	private String tbNm;
 	

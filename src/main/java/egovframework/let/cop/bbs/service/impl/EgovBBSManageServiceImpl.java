@@ -78,7 +78,7 @@ public class EgovBBSManageServiceImpl extends EgovAbstractServiceImpl implements
 	public void insertBoardArticle(Board board) throws Exception {
 		// SORT_ORDR는 부모글의 소트 오더와 같게, NTT_NO는 순서대로 부여
 
-		if ("Y".equals(board.getReplyAt())) {
+		if ("Y".equals(board.getRplyYn())) {
 			// 답글인 경우 1. Parnts를 세팅, 2.Parnts의 sortOrdr을 현재글의 sortOrdr로 가져오도록, 3.nttNo는 현재 게시판의 순서대로
 			// replyLc는 부모글의 ReplyLc + 1
 
@@ -89,8 +89,8 @@ public class EgovBBSManageServiceImpl extends EgovAbstractServiceImpl implements
 		} else {
 			// 답글이 아닌경우 Parnts = 0, replyLc는 = 0, sortOrdr = nttNo(Query에서 처리)
 			board.setParnts("0");
-			board.setReplyLc("0");
-			board.setReplyAt("N");
+			board.setRplyLoc("0");
+			board.setRplyYn("N");
 
 			bbsMngDAO.insertBoardArticle(board);
 		}
@@ -104,10 +104,10 @@ public class EgovBBSManageServiceImpl extends EgovAbstractServiceImpl implements
 	@Override
 	public BoardVO selectBoardArticle(BoardVO boardVO) throws Exception {
 		if (boardVO.isPlusCount()) {
-			int iniqireCo = bbsMngDAO.selectMaxInqireCo(boardVO);
+			int readCnt = bbsMngDAO.selectMaxReadCnt(boardVO);
 
-			boardVO.setInqireCo(iniqireCo);
-			bbsMngDAO.updateInqireCo(boardVO);
+			boardVO.setReadCnt(readCnt);
+			bbsMngDAO.updateReadCnt(boardVO);
 		}
 
 		return bbsMngDAO.selectBoardArticle(boardVO);
@@ -132,9 +132,9 @@ public class EgovBBSManageServiceImpl extends EgovAbstractServiceImpl implements
 			while (iter.hasNext()) {
 				vo = iter.next();
 
-				if (!"".equals(vo.getNtceBgnde()) || !"".equals(vo.getNtceEndde())) {
-					if (EgovDateUtil.getDaysDiff(today, vo.getNtceBgnde()) > 0
-						|| EgovDateUtil.getDaysDiff(today, vo.getNtceEndde()) < 0) {
+				if (!"".equals(vo.getNtceBgnDt()) || !"".equals(vo.getNtceEndDt())) {
+					if (EgovDateUtil.getDaysDiff(today, vo.getNtceBgnDt()) > 0
+						|| EgovDateUtil.getDaysDiff(today, vo.getNtceEndDt()) < 0) {
 						// 시작일이 오늘날짜보다 크거나, 종료일이 오늘 날짜보다 작은 경우
 						vo.setIsExpired("Y");
 					}

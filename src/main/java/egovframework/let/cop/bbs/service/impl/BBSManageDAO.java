@@ -129,8 +129,8 @@ public class BBSManageDAO extends EgovAbstractMapper {
      * @param board
      * @throws Exception
      */
-    public void updateInqireCo(BoardVO boardVO) throws Exception {
-	update("BBSManageDAO.updateInqireCo", boardVO);
+    public void updateReadCnt(BoardVO boardVO) throws Exception {
+	update("BBSManageDAO.updateReadCnt", boardVO);
     }
 
     /**
@@ -140,8 +140,8 @@ public class BBSManageDAO extends EgovAbstractMapper {
      * @return
      * @throws Exception
      */
-    public int selectMaxInqireCo(BoardVO boardVO) throws Exception {
-	return (Integer)selectOne("BBSManageDAO.selectMaxInqireCo", boardVO);
+    public int selectMaxReadCnt(BoardVO boardVO) throws Exception {
+	return (Integer)selectOne("BBSManageDAO.selectMaxReadCnt", boardVO);
     }
 
     /**

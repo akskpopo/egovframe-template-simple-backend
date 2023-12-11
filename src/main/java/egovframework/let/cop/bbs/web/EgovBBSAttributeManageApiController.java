@@ -107,12 +107,12 @@ public class EgovBBSAttributeManageApiController {
 
 		PaginationInfo paginationInfo = new PaginationInfo();
 
-		paginationInfo.setCurrentPageNo(boardMasterVO.getPageIndex());
+		paginationInfo.setCurrentPageNo(boardMasterVO.getPageIdx());
 		paginationInfo.setRecordCountPerPage(boardMasterVO.getPageUnit());
 		paginationInfo.setPageSize(boardMasterVO.getPageSize());
 
-		boardMasterVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-		boardMasterVO.setLastIndex(paginationInfo.getLastRecordIndex());
+		boardMasterVO.setFrstIdx(paginationInfo.getFirstRecordIndex());
+		boardMasterVO.setLastIdx(paginationInfo.getLastRecordIndex());
 		boardMasterVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
 		Map<String, Object> resultMap = bbsAttrbService.selectBBSMasterInfs(boardMasterVO);
@@ -217,10 +217,10 @@ public class EgovBBSAttributeManageApiController {
 			return resultVO;
 		}
 
-		boardMasterVO.setFrstRegisterId(loginVO.getUniqId());
-		boardMasterVO.setUseAt("Y");
-		boardMasterVO.setTrgetId("SYSTEMDEFAULT_REGIST");
-		boardMasterVO.setPosblAtchFileSize(propertyService.getString("posblAtchFileSize"));
+		boardMasterVO.setDataInptId(loginVO.getUniqId());
+		boardMasterVO.setUseYn("Y");
+		boardMasterVO.setTrgtId("SYSTEMDEFAULT_REGIST");
+		boardMasterVO.setPsblAtchFileSize(propertyService.getString("posblAtchFileSize"));
 
 		bbsAttrbService.insertBBSMastetInf(boardMasterVO);
 
@@ -274,8 +274,8 @@ public class EgovBBSAttributeManageApiController {
 			return resultVO;
 		}
 
-		boardMasterVO.setLastUpdusrId(loginVO.getUniqId());
-		boardMasterVO.setPosblAtchFileSize(propertyService.getString("posblAtchFileSize"));
+		boardMasterVO.setDataUpdId(loginVO.getUniqId());
+		boardMasterVO.setPsblAtchFileSize(propertyService.getString("posblAtchFileSize"));
 		bbsAttrbService.updateBBSMasterInf(boardMasterVO);
 
 		resultVO.setResult(resultMap);
@@ -310,7 +310,7 @@ public class EgovBBSAttributeManageApiController {
 		@RequestBody BoardMasterVO boardMasterVO) throws Exception {
 		ResultVO resultVO = new ResultVO();
 
-			boardMasterVO.setLastUpdusrId(loginVO.getUniqId());
+			boardMasterVO.setDataUpdId(loginVO.getUniqId());
 			bbsAttrbService.deleteBBSMasterInf(boardMasterVO);
 
 			resultVO.setResultCode(ResponseCode.SUCCESS.getCode());

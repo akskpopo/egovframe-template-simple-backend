@@ -31,6 +31,7 @@
 		<if test="userSe == &quot;USR&quot;">
 			
             SELECT USER_ID AS id
+            	 , USER_ID AS uniqId
                  , USER_NM AS name
                  , PWD AS password
                  , emal_adrs AS email
